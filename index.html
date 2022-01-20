@@ -32,32 +32,32 @@
     </style>
 </head>
 <body>
-    <h1>推流Demo</h1>
+    <h1>라이브 스트림 Demo</h1>
     <div class="m-input">
-        <span class="u-input-name">摄像头：</span>
+        <span class="u-input-name">카메라：</span>
         <select class="u-input" id="cameraSelect">
         </select>
     </div>
     <div class="m-input">
-        <span class="u-input-name">麦克风：</span>
+        <span class="u-input-name">마이크：</span>
         <select class="u-input" id="microPhoneSelect">
         </select>
     </div>
     <div class="m-input">
-        <span class="u-input-name">清晰度：</span>
+        <span class="u-input-name">선명도：</span>
         <select class="u-input" id="qualitySelect">
-            <option value="0">流畅（480*360@20）</option>
-            <option value="1">标清（640*480@20）</option>
-            <option value="2">高清（960*540@20）</option>
+            <option value="0">부드러운（480*360@20）</option>
+            <option value="1">SD（640*480@20）</option>
+            <option value="2">HD（960*540@20）</option>
         </select>
     </div>
     <div class="m-input">
-        <span class="u-input-name">推流地址：</span>
+        <span class="u-input-name">Push URL：</span>
         <input class="u-input" type="text" id="publishUrl">
     </div>
     <div class="m-input">
-        <button class="button button-primary button-rounded testBtn" id="previewBtn" onclick="startPreview()">预览</button>
-        <button class="button button-primary button-rounded testBtn" id="publishBtn" onclick="startPublish()">开始直播</button>
+        <button class="button button-primary button-rounded testBtn" id="previewBtn" onclick="startPreview()">미리보기</button>
+        <button class="button button-primary button-rounded testBtn" id="publishBtn" onclick="startPublish()">라이브 시작</button>
         <span class="u-status"></span>
     </div>
 	<object width="862" height="486" id="my-publisher" type="application/x-shockwave-flash" data="publisher-ebd4e1deba.swf" style="visibility: visible;"><param name="wmode" value="transparent"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="quality" value="high"><param name="align" value="middle"><param name="flashvars" value="id=100&width=862&height=486&js_bridge_method=nePublisher.js_bridge_message"></object>
@@ -98,21 +98,21 @@
 			});
 		var qualityList = [
 			{
-				//流畅
+				//부드러운
 				fps: 20,
 				bitrate: 600,
 				videoWidth:480,
 				videoHeight:360
 			},
 			{
-				//标清
+				//SD
 				fps: 20,
 				bitrate: 800,
 				videoWidth:640,
 				videoHeight:480
 			},
 			{
-				//高清
+				//HD
 				fps: 20,
 				bitrate: 1500,
 				videoWidth:960,
@@ -154,9 +154,9 @@
 			stopPublishCall();
 		};
 		var startPublishCall = function() {
-			console.log('推流开始');
-			document.getElementsByClassName('u-status')[0].innerHTML = '直播中';
-			publishBtn.innerHTML = '停止直播';
+			console.log('스트리밍 시작');
+			document.getElementsByClassName('u-status')[0].innerHTML = '라이브';
+			publishBtn.innerHTML = '라이브 중지';
 			publishBtn.onclick = stopPublish;
 			for (var i = testInput.length - 1; i >= 0; i--) {
 				testInput[i].disabled = true;
@@ -165,9 +165,9 @@
 
 		};
 		var stopPublishCall = function() {
-			console.log('推流结束');
-			document.getElementsByClassName('u-status')[0].innerHTML = '预览中';
-			publishBtn.innerHTML = '开始直播';
+			console.log('푸시 종료');
+			document.getElementsByClassName('u-status')[0].innerHTML = '미리보기';
+			publishBtn.innerHTML = '라이브 시작';
 			publishBtn.onclick = startPublish;
 			for (var i = testInput.length - 1; i >= 0; i--) {
 				testInput[i].disabled = false;
